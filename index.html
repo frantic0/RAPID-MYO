@@ -2,14 +2,8 @@
 
 <head>
 	<meta charset="utf-8">
-
-	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/style.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<title></title>
 </head>
 
@@ -142,20 +136,17 @@
 <!-- jQuery (necessary for Bootstrap"s JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-	// var jQuery_1_12_4 = $.noConflict(true);
+	var jQuery_1_12_4 = $.noConflict(true);
 </script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.js"></script>
 
-<script language="javascript" src="myo.js"></script>
-<script language="javascript" src="emgGraphs.js"></script>
-<script language="javascript" src="deviceGraphs.js"></script>
-
-<script src="https://www.doc.gold.ac.uk/eavi/rapidmix/RapidLib.js"></script>
+<script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/myo.js"></script>
+<script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/emgGraphs.js"></script>
+<script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/deviceGraphs.js"></script>
 
 <script language="javascript" type="text/javascript" src="https://www.doc.gold.ac.uk/eavi/rapidmix/RapidLib.js"></script>
 <script>
@@ -166,7 +157,6 @@
 	/////////////////////////////////////////MAXI
 	var myMod = 0;
 	var myFreq = 256;
-	var maximJs;
 
 	function makeNoise(rOut) {
 		myFreq = 256 + (1024 * rOut);
@@ -299,12 +289,6 @@
 
 		return [quat_x[quat_x.length - 1], quat_y[quat_y.length - 1], quat_z[quat_z.length - 1], quat_w[quat_w.length - 1]];
 	}
-
-
-
-
-
-	////////////////PLOT
 
 
 	// Set up the control widget
