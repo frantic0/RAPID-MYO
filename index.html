@@ -2,131 +2,248 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/style.css" />
+	<style>
+		html,
+		body {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #10161d url('img/dot_grid.png');
+			font-family: 'blender_prothin';
+			font-size: 12px;
+			color: #58bccc;
+			line-height: 20px;
+		}
+
+		body {
+			text-align: center;
+		}
+
+		.container {
+			width: 940px;
+			margin: 200px 0 0 0;
+		}
+
+		#imuContainer {
+			margin: 10px 0 0 0;
+		}
+		/*.imuRow {*/
+		/*
+        	padding: 0 0 0 50px;*/
+		/*}*/
+
+		.btn_imu {
+			margin: 20px 0 0 0;
+		}
+
+		.imuGraph {
+			margin: 0 0 0 50px;
+		}
+
+		#gyroGraph {
+			height: 80px;
+			width: 455px;
+			margin: 0 0 0 35px;
+		}
+
+		#accelGraph {
+			height: 80px;
+			width: 441px;
+			margin: 0 0 0 49px;
+		}
+
+		#orientationGraph {
+			height: 80px;
+			width: 452px;
+			margin: 0 0 0 38px;
+		}
+		/*.emgChannel{*/
+		/*	display: inline-block;
+        	*display: inline;
+        	zoom: 1;
+        	vertical-align: center; d
+        	horizontal-align: top;*/
+		/*}*/
+
+		.inline-fields {
+			display: inline-block;
+		}
+
+		.sliders_SynthParam {
+			width: 50px;
+		}
+
+		.emgRow {
+			padding: 0 0 0 50px;
+		}
+
+		.btn_emg {
+			margin: 10px 0 0 0;
+		}
+
+		.emgGraph {
+			display: inline-block;
+			height: 55px;
+			width: auto;
+			padding: 0 0 0 0;
+		}
+
+		.emgCompositeGraph {
+			display: inline-block;
+			height: 440px;
+			width: 500px;
+		}
+		
+		.button_emg {
+			display: inline-block;
+		}
+
+		#randomData {
+			display: inline-block;
+			height: 250px;
+			width: 500px;
+			margin: 10px 0 0 50px;
+		}
+	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<title></title>
 </head>
 
 <body>
 	<div id="container">
-		<h2>EMG</h2>
-		<div class="emg row" id="emgContainer">
-			<div class="col-md-6">
+
+		<div id="container_emg">
+
+			<h2>EMG</h2>
+
+			<div id="container_emg_rows" class="col-md-6">
+
 				<div class="row emgRow">
-					<div id="pod0" class="emgGraph col-md-10"></div>
-					<button id="ch1" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 1</button>
+
+					<div id="pod0" class="emgGraph"></div>
+
+					<button id="ch1" type="button" class="btn btn-secondary button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 1</button>
 					<!-- <button class="btn btn-primary btn-sm col-md-2 btn_emg" type="button" data-toggle="button" onclick="randomize()">Ch 1</button> -->
 				</div>
+
 				<div class="row emgRow">
-					<div id="pod1" class="emgGraph col-md-10"></div>
+					<div id="pod1" class="emgGraph"></div>
 					<button id="ch2" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 2</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod2" class="emgGraph col-md-10"></div>
 					<button id="ch3" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 3</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod3" class="emgGraph col-md-10"></div>
 					<button id="ch4" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 4</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod4" class="emgGraph col-md-10"></div>
 					<button id="ch5" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 5</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod5" class="emgGraph col-md-10"></div>
 					<button id="ch6" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 6</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod6" class="emgGraph col-md-10"></div>
 					<button id="ch7" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 7</button>
 				</div>
+
 				<div class="row emgRow">
 					<div id="pod7" class="emgGraph col-md-10"></div>
 					<button id="ch8" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 8</button>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="emgCompositeGraph" id="emgComposite"></div>
-			</div>
-		</div>
 
-		<h2>IMU</h2>
-		<div class="imuGraphs row col-md-6" id="imuContainer">
-			<div class="row">
-				<div id="gyroGraph" class="col-md-10"></div>
-				<button type="button" class="btn btn-primary" data-toggle="button">Gyro</button>
 			</div>
-			<div class="row">
-				<div id="accelGraph" class="col-md-10"></div>
-				<button type="button" class="btn btn-primary" data-toggle="button">Accel</button>
-			</div>
-			<div class="row">
-				<div id="orientationGraph" class="col-md-10"></div>
-				<button type="button" class="btn btn-primary" data-toggle="button">Ori</button>
+
+			<div id="emgComposite" class="emgCompositeGraph col-md-6"></div>
+		</div>
+	</div>
+	<h2>IMU</h2>
+	<div class=" imuGraphs row col-md-6 " id="imuContainer ">
+		<div class="row ">
+			<div id="gyroGraph " class="col-md-10 "></div>
+			<button type="button " class="btn btn-primary " data-toggle="button ">Gyro</button>
+		</div>
+		<div class="row ">
+			<div id="accelGraph " class="col-md-10 "></div>
+			<button type="button " class="btn btn-primary " data-toggle="button ">Accel</button>
+		</div>
+		<div class="row ">
+			<div id="orientationGraph " class="col-md-10 "></div>
+			<button type="button " class="btn btn-primary " data-toggle="button ">Ori</button>
+		</div>
+	</div>
+	<div class="randomDataGraph col-md-6 " id="randomData "></div>
+	<div class="row " id="mapping " style="margin-top: 50px ">
+		<div class="col-md-6 " id="machineLearning ">
+			<h2>Machine Learning</h2>
+			<div class="row controls btn-group ">
+				<button class="btn btn-default " onclick="togRecord() ">Record</button>
+				<button class="btn btn-default " onclick="train() ">Train</button>
+				<button class="btn btn-default " onclick="togRun() ">Run</button>
 			</div>
 		</div>
-		<div class="randomDataGraph col-md-6" id="randomData"></div>
-		<div class="row" id="mapping" style="margin-top: 50px">
-			<div class="col-md-6" id="machineLearning">
-				<h2>Machine Learning</h2>
-				<div class="row controls btn-group">
-					<button class="btn btn-default" onclick="togRecord()">Record</button>
-					<button class="btn btn-default" onclick="train()">Train</button>
-					<button class="btn btn-default" onclick="togRun()">Run</button>
+		<div class="col-md-6 " id="synthContainer ">
+			<h2 class="row ">Synth</h2>
+			<div class="row " id="Synth ">
+				<div class="row controls btn-group ">
+					<button class="btn btn-default " onclick="randomize() ">Randomize</button>
+					<button class="btn btn-default " onclick="togMute() ">Mute</button>
 				</div>
-			</div>
-			<div class="col-md-6" id="synthContainer">
-				<h2 class="row">Synth</h2>
-				<div class="row" id="Synth">
-					<div class="row controls btn-group">
-						<button class="btn btn-default" onclick="randomize()">Randomize</button>
-						<button class="btn btn-default" onclick="togMute()">Mute</button>
-					</div>
-					<div class="row controls" id="modParams">
-						<h4 style="text-align: left;">Modulator Parameters</h4>
-						<form>
-							<div class="form-group">
-								<span style="text-align: left;" class="col-md-4" for="mdSlider">Frequency</span>
-								<div class="col-md-4">
-									<input id="mfSlider" name="mfSlider" min="1" max="4096" step="0.5" value="4.1" type="range" autocomplete="off" oninput="mfOutput.value = mfSlider.value">
-								</div>
-								<div class="col-md-4">
-									<output id="mfOutput">4.1</output>
-								</div>
+				<div class="row controls " id="modParams ">
+					<h4 style="text-align: left; ">Modulator Parameters</h4>
+					<form>
+						<div class="form-group ">
+							<span style="text-align: left; " class="col-md-4 " for="mdSlider ">Frequency</span>
+							<div class="col-md-4 ">
+								<input id="mfSlider " name="mfSlider " min="1 " max="4096 " step="0.5 " value="4.1 " type="range " autocomplete="off " oninput="mfOutput.value=m fSlider.value ">
 							</div>
-							<div class="form-group">
-								<span style="text-align: left;" class="col-md-4" for="mdSlider">Depth</span>
-								<div class="col-md-4">
-									<input id="mdSlider" name="mdSlider" min="0" max="1" step="0.01" value="0.2" type="range" autocomplete="off" oninput="mdOutput.value = mdSlider.value">
-								</div>
-								<div class="col-md-4">
-									<output id="mdOutput">0.2</output>
-								</div>
+							<div class="col-md-4 ">
+								<output id="mfOutput ">4.1</output>
 							</div>
-						</form>
-						<h4 style="text-align: left;">Filter Parameters</h4>
-						<form>
-							<div class="form-group">
-								<span style="text-align: left;" class="col-md-4" for="cfSlider">Center Frequency</span>
-								<div class="col-md-4">
-									<input id="cfSlider" name="cfSlider" min="256" max="4096" step="0.5" value="512.0" type="range" autocomplete="off" oninput="cfOutput.value = cfSlider.value">
-								</div>
-								<div class="col-md-4">
-									<output id="cfOutput">512</output>
-								</div>
+						</div>
+						<div class="form-group ">
+							<span style="text-align: left; " class="col-md-4 " for="mdSlider ">Depth</span>
+							<div class="col-md-4 ">
+								<input id="mdSlider " name="mdSlider " min="0 " max="1 " step="0.01 " value="0.2 " type="range " autocomplete="off " oninput="mdOutput.value=m dSlider.value ">
 							</div>
-							<div class="form-group">
-								<span style="text-align: left;" class="col-md-4" for="qSlider">Resonance</span>
-								<div class="col-md-4">
-									<input id="qSlider" name="qSlider" min="0" max="40" step="0.5" value="2" type="range" autocomplete="off" oninput="qOutput.value = qSlider.value">
-								</div>
-								<div class="col-md-4">
-									<output id="qOutput">2</output>
-								</div>
+							<div class="col-md-4 ">
+								<output id="mdOutput ">0.2</output>
 							</div>
-						</form>
-					</div>
+						</div>
+					</form>
+					<h4 style="text-align: left; ">Filter Parameters</h4>
+					<form>
+						<div class="form-group ">
+							<span style="text-align: left; " class="col-md-4 " for="cfSlider ">Center Frequency</span>
+							<div class="col-md-4 ">
+								<input id="cfSlider " name="cfSlider " min="256 " max="4096 " step="0.5 " value="512.0 " type="range " autocomplete="off " oninput="cfOutput.value=c fSlider.value ">
+							</div>
+							<div class="col-md-4 ">
+								<output id="cfOutput ">512</output>
+							</div>
+						</div>
+						<div class="form-group ">
+							<span style="text-align: left; " class="col-md-4 " for="qSlider ">Resonance</span>
+							<div class="col-md-4 ">
+								<input id="qSlider " name="qSlider " min="0 " max="40 " step="0.5 " value="2 " type="range " autocomplete="off " oninput="qOutput.value=q Slider.value ">
+							</div>
+							<div class="col-md-4 ">
+								<output id="qOutput ">2</output>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -278,7 +395,7 @@
 		return compositeData;
 	}
 
-    var graphDataOrientation;
+	var graphDataOrientation;
 
 	function getCurrentQuaternion() {
 
@@ -398,7 +515,7 @@
 				train();
 				break;
 			default:
-				minyOutput = e.keyCode - 48;
+				// minyOutput = e.keyCode - 48;
 		}
 	}
 
@@ -520,4 +637,5 @@
 		qOutput.value = qSlider.value;
 	}
 </script>
+
 </html>
