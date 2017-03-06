@@ -27,11 +27,11 @@
 		}
 
 		#container_machineLearning {
-			margin: 0 0px 0 20px;
+			margin: 0 0px 0 0px;
 		}
 
-		#container_machineLearning_controls{
-		   	margin: 0 0px 0 0px;
+		#container_machineLearning_controls {
+			margin: 0 0px 0 0px;
 		}
 
 		#container_synth {
@@ -39,9 +39,8 @@
 		}
 
 		#container_synth_rows {
-		    margin: 0 20px 0 20px;
+			margin: 0 20px 0 20px;
 		}
-
 
 		#gyroGraph {
 			height: 70px;
@@ -89,6 +88,7 @@
 		.element_synth {
 			margin: 5 5 5 5;
 		}
+
 		.slider_synth_param {
 			width: 90px;
 		}
@@ -114,8 +114,8 @@
 
 		<div class="row">
 
-            <!--style="background: Thistle"-->
-			<div id="container_emg"  class="col-12">
+			<!--style="background: Thistle"-->
+			<div id="container_emg" style="background: Thistle" class="col-12">
 
 				<div class="row">
 					<h2>EMG</h2>
@@ -178,8 +178,8 @@
 		<br>
 
 		<div class="row">
-            <!--style="background: PaleGreen"-->
-			<div id="container_imu" class="col-6">
+			<!--style="background: PaleGreen"-->
+			<div id="container_imu" style="background: PaleGreen" class="col-6">
 
 				<div class="row">
 					<h2>IMU</h2>
@@ -190,17 +190,17 @@
 					<div id="container_imu_rows" class="col-12">
 						<div class="row">
 							<div id="gyroGraph" class="col-md-10"></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button">Gyro</button>
+							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Gyro</button>
 						</div>
 
 						<div class="row">
 							<div id="accelGraph" class="col-md-10"></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button">Accel</button>
+							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Accel</button>
 						</div>
 
 						<div class="row">
 							<div id="orientationGraph" class="col-md-10 "></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button ">Ori</button>
+							<button type="button" class="btn btn-outline-primary btn-sm button_imu active" data-toggle="button" onclick="btn_onClick(this);">Ori</button>
 						</div>
 					</div>
 
@@ -208,15 +208,21 @@
 
 			</div>
 
-            <!--style="background: lightblue"-->
-			<div id="container_machineLearning"  class="col-2">
+			<!--style="background: lightblue"-->
+			<div id="container_machineLearning" style="background: lightblue" class="col-6">
 
 				<div class="row">
 					<h2>Machine Learning</h2>
 				</div>
-
+				<br>
 				<div class="row">
-					<div class="container_machineLearning_controls col-4">
+					<div id="trainingData" class="container_machineLearning_controls">
+						[0.0000, 0.0000, 0.0000, 00000, 00000 ,0000 , 0000 ,0000, 000, 000, 00000 ,0000 ,0000, 00000, 0000]
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="container_machineLearning_controls">
 						<button class="btn btn-outline-primary btn-lg" data-toggle="button" aria-pressed="false" onclick="togRecord()">Record</button>
 						<button class="btn btn-outline-primary btn-lg" onclick="train()">Train</button>
 						<button class="btn btn-outline-primary btn-lg" data-toggle="button" aria-pressed="false" onclick="togRun()">Run</button>
@@ -225,8 +231,9 @@
 			</div>
 
 			<!--<div class="randomDataGraph col-md-6 " id="randomData "></div>-->
-            <!--style="background: Salmon" -->
-			<div id="container_synth" class="col-3">
+
+			<!--style="background: Salmon" -->
+			<div id="container_synth" style="background: Salmon" class="col-3">
 
 				<div class="row">
 					<h2>Synth</h2>
@@ -253,7 +260,7 @@
 								</div>
 
 								<div class="row">
-									<div  class="element_synth inline-fields" style="margin: 5 25 5 5; text-align: left;" for="mdSlider">Depth</div>
+									<div class="element_synth inline-fields" style="margin: 5 25 5 5; text-align: left;" for="mdSlider">Depth</div>
 									<input id="mdSlider" name="mdSlider" class="element_synth slider_synth_param inline-fields" min="0" max="1" step="0.01" value="0.2" type="range" autocomplete="off" oninput="mdOutput.value=mdSlider.value">
 									<output id="mdOutput" class="element_synth inline-fields">0.2</output>
 								</div>
@@ -284,20 +291,17 @@
 	</div>
 </body>
 
-<!-- jQuery (necessary for Bootstrap"s JavaScript plugins) -->
+<!-- jQuery (v1.12.4 necessary for Bootstrap"s JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 	var jQuery_1_12_4 = $.noConflict(true);
 </script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!--<script src="js/bootstrap.min.js"></script>-->
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
 <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.js"></script>
 
 <script language="javascript" type="text/javascript" src="https://www.doc.gold.ac.uk/eavi/rapidmix/RapidLib.js"></script>
 
-<!--<script language="javascript" type="text/javascript" src="https://doc.gold.ac.uk/~mzbys001/RapidMixLib.js"></script>-->
 <script>
 	//alert("Record mouse positions associated with filter parameters.");
 
@@ -438,41 +442,38 @@
 		return [quat_x[quat_x.length - 1], quat_y[quat_y.length - 1], quat_z[quat_z.length - 1], quat_w[quat_w.length - 1]];
 	}
 
-
-	// Set up the control widget
-
 	var updateInterval = 10;
 	var realTimeUpdate = true;
 
-// 	$("#updateInterval").val(updateInterval).change(function() {
-// 		var v = $(this).val();
-// 		if (v && !isNaN(+v)) {
-// 			updateInterval = +v;
-// 			if (updateInterval < 1) {
-// 				updateInterval = 1;
-// 			} else if (updateInterval > 2000) {
-// 				updateInterval = 2000;
-// 			}
-// 			$(this).val("" + updateInterval);
-// 		}
-// 	});
+	// 	$("#updateInterval").val(updateInterval).change(function() {
+	// 		var v = $(this).val();
+	// 		if (v && !isNaN(+v)) {
+	// 			updateInterval = +v;
+	// 			if (updateInterval < 1) {
+	// 				updateInterval = 1;
+	// 			} else if (updateInterval > 2000) {
+	// 				updateInterval = 2000;
+	// 			}
+	// 			$(this).val("" + updateInterval);
+	// 		}
+	// 	});
 
-// 	var plot = $.plot("#randomData", [getRandomData()], {
-// 		colors: ["#04fbec", "#ebf1be", "#c14b2a", "#8aceb5"],
-// 		series: {
-// 			shadowSize: 0 // Drawing is faster without shadows
-// 		},
-// 		yaxis: {
-// 			min: 0,
-// 			max: 100
-// 		},
-// 		xaxis: {
-// 			show: true
-// 		},
-// 		selection: {
-// 			mode: "x"
-// 		}
-// 	});
+	// 	var plot = $.plot("#randomData", [getRandomData()], {
+	// 		colors: ["#04fbec", "#ebf1be", "#c14b2a", "#8aceb5"],
+	// 		series: {
+	// 			shadowSize: 0 // Drawing is faster without shadows
+	// 		},
+	// 		yaxis: {
+	// 			min: 0,
+	// 			max: 100
+	// 		},
+	// 		xaxis: {
+	// 			show: true
+	// 		},
+	// 		selection: {
+	// 			mode: "x"
+	// 		}
+	// 	});
 
 
 
@@ -482,36 +483,43 @@
 
 
 	var myTimer;
+	var trainingData = document.getElementById("trainingData");
+
+
+	function setCurrentTrainingSample() {
+
+		var rapidInput = getCurrentQuaternion();
+		var rapidOutput = [(mfSlider.value), (mdSlider.value), (cfSlider.value), (qSlider.value)];
+
+		myTrainingSet.push({
+			input: rapidInput,
+			output: rapidOutput
+		});
+
+	}
 
 	function update() {
 
-// 		console.log("Not updating");
+		// 		console.log("Not updating");
 
 		if (realTimeUpdate) {
-// 			plot.setData([getRandomData()]);
+			// 			plot.setData([getRandomData()]);
 
-// 			// Since the axes don"t change, we don"t need to call plot.setupGrid()
-// 			// plot.setupGrid();
-// 			plot.draw();
-// 			myTimer = setTimeout(update, updateInterval);
+			// 			// Since the axes don"t change, we don"t need to call plot.setupGrid()
+			// 			// plot.setupGrid();
+			// 			plot.draw();
+			// 			myTimer = setTimeout(update, updateInterval);
 		} else {
 			console.log("Not updating");
 		}
 
-        myTimer = setTimeout(update, updateInterval);
+		myTimer = setTimeout(update, updateInterval);
 
 		if (recordState) {
 
-			console.log("Recording");
-			// console.log(graphDataOrientation);
-			// console.log(getCurrentQuaternion(graphDataOrientation));
+			setCurrentTrainingSample();
 
-			var rapidInput = getCurrentQuaternion();
-			var rapidOutput = [(mfSlider.value), (mdSlider.value), (cfSlider.value), (qSlider.value)];
-			myTrainingSet.push({
-				input: rapidInput,
-				output: rapidOutput
-			});
+			trainingData.innerHTML = myTrainingSet[myTrainingSet.length - 1].input;
 		}
 		if (runState) {
 			var rapidInput = getCurrentQuaternion();
@@ -666,4 +674,5 @@
 <script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/myo.js"></script>
 <script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/emgGraphs.js"></script>
 <script language="javascript" src="https://www.doc.gold.ac.uk/~fbern010/RAPID-Myo/deviceGraphs.js"></script>
+
 </html>
