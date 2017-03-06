@@ -18,55 +18,50 @@
 			line-height: 20px;
 		}
 
-		body {
-			text-align: center;
+		#container {
+			/*width: 940px;*/
+			margin: 0 20px 0 20px;
 		}
 
-		.container {
-			width: 940px;
-			margin: 200px 0 0 0;
+		#container_emg {
+			margin: 0 20px 0 20px;
 		}
 
-		#imuContainer {
-			margin: 10px 0 0 0;
-		}
-		/*.imuRow {*/
-		/*
-        	padding: 0 0 0 50px;*/
-		/*}*/
-
-		.btn_imu {
-			margin: 20px 0 0 0;
-		}
-
-		.imuGraph {
-			margin: 0 0 0 50px;
+		#container_imu {
+			margin: 0 20px 0 0;
 		}
 
 		#gyroGraph {
 			height: 80px;
 			width: 455px;
-			margin: 0 0 0 35px;
 		}
 
 		#accelGraph {
 			height: 80px;
-			width: 441px;
-			margin: 0 0 0 49px;
+			width: 455px;
 		}
 
 		#orientationGraph {
 			height: 80px;
-			width: 452px;
-			margin: 0 0 0 38px;
+			width: 455px;
 		}
-		/*.emgChannel{*/
-		/*	display: inline-block;
-        	*display: inline;
-        	zoom: 1;
-        	vertical-align: center; d
-        	horizontal-align: top;*/
-		/*}*/
+
+		.button_emg {
+			margin: 10 10 10 10;
+		}
+
+		.emgGraph {
+			display: inline-block;
+			height: 55px;
+			width: 100px;
+			padding: 0 0 0 0;
+		}
+
+		.emgCompositeGraph {
+			display: inline-block;
+			height: 440px;
+			width: 200px;
+		}
 
 		.inline-fields {
 			display: inline-block;
@@ -76,31 +71,6 @@
 			width: 50px;
 		}
 
-		.emgRow {
-			padding: 0 0 0 50px;
-		}
-
-		.btn_emg {
-			margin: 10px 0 0 0;
-		}
-
-		.emgGraph {
-			display: inline-block;
-			height: 55px;
-			width: auto;
-			padding: 0 0 0 0;
-		}
-
-		.emgCompositeGraph {
-			display: inline-block;
-			height: 440px;
-			width: 500px;
-		}
-		
-		.button_emg {
-			display: inline-block;
-		}
-
 		#randomData {
 			display: inline-block;
 			height: 250px;
@@ -108,98 +78,115 @@
 			margin: 10px 0 0 50px;
 		}
 	</style>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-	<div id="container">
 
-		<div id="container_emg">
+	<div id="container_emg">
 
-			<h2>EMG</h2>
+		<h2>EMG</h2>
 
-			<div id="container_emg_rows" class="col-md-6">
+		<br>
 
-				<div class="row emgRow">
+		<div id="container_emg_rows">
 
-					<div id="pod0" class="emgGraph"></div>
-
-					<button id="ch1" type="button" class="btn btn-secondary button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 1</button>
-					<!-- <button class="btn btn-primary btn-sm col-md-2 btn_emg" type="button" data-toggle="button" onclick="randomize()">Ch 1</button> -->
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod1" class="emgGraph"></div>
-					<button id="ch2" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 2</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod2" class="emgGraph col-md-10"></div>
-					<button id="ch3" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 3</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod3" class="emgGraph col-md-10"></div>
-					<button id="ch4" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 4</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod4" class="emgGraph col-md-10"></div>
-					<button id="ch5" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 5</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod5" class="emgGraph col-md-10"></div>
-					<button id="ch6" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 6</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod6" class="emgGraph col-md-10"></div>
-					<button id="ch7" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 7</button>
-				</div>
-
-				<div class="row emgRow">
-					<div id="pod7" class="emgGraph col-md-10"></div>
-					<button id="ch8" type="button" class="btn btn-primary" data-toggle="button" onclick="btn_onClick(this);">Ch 8</button>
-				</div>
-
+			<div class="row emgRow">
+				<div id="pod0" class="emgGraph col-md-10"></div>
+				<button id="ch1" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 1</button>
 			</div>
 
-			<div id="emgComposite" class="emgCompositeGraph col-md-6"></div>
+			<div class="row emgRow">
+				<div id="pod1" class="emgGraph col-md-10"></div>
+				<button id="ch2" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 2</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod2" class="emgGraph col-md-10"></div>
+				<button id="ch3" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 3</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod3" class="emgGraph col-md-10"></div>
+				<button id="ch4" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 4</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod4" class="emgGraph col-md-10"></div>
+				<button id="ch5" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 5</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod5" class="emgGraph col-md-10"></div>
+				<button id="ch6" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 6</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod6" class="emgGraph col-md-10"></div>
+				<button id="ch7" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 7</button>
+			</div>
+
+			<div class="row emgRow">
+				<div id="pod7" class="emgGraph col-md-10"></div>
+				<button id="ch8" type="button" class="btn btn-outline-primary btn-sm button_emg" data-toggle="button" onclick="btn_onClick(this);">Ch 8</button>
+			</div>
+
+		</div>
+
+		<div id="emgComposite" class="emgCompositeGraph col-md-6"></div>
+
+	</div>
+
+	<br>
+
+	<div id="container_imu">
+
+		<h2>IMU</h2>
+
+		<br>
+
+		<div id="container_imu_rows" class="col-md-6">
+
+			<div class="row ">
+				<div id="gyroGraph" class="col-md-10"></div>
+				<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="button ">Gyro</button>
+			</div>
+
+			<div class="row ">
+				<div id="accelGraph" class="col-md-10 "></div>
+				<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="button ">Accel</button>
+			</div>
+
+			<div class="row ">
+				<div id="orientationGraph" class="col-md-10 "></div>
+				<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="button ">Ori</button>
+			</div>
 		</div>
 	</div>
-	<h2>IMU</h2>
-	<div class=" imuGraphs row col-md-6 " id="imuContainer ">
-		<div class="row ">
-			<div id="gyroGraph " class="col-md-10 "></div>
-			<button type="button " class="btn btn-primary " data-toggle="button ">Gyro</button>
-		</div>
-		<div class="row ">
-			<div id="accelGraph " class="col-md-10 "></div>
-			<button type="button " class="btn btn-primary " data-toggle="button ">Accel</button>
-		</div>
-		<div class="row ">
-			<div id="orientationGraph " class="col-md-10 "></div>
-			<button type="button " class="btn btn-primary " data-toggle="button ">Ori</button>
-		</div>
-	</div>
-	<div class="randomDataGraph col-md-6 " id="randomData "></div>
+
+	<!--<div class="randomDataGraph col-md-6 " id="randomData "></div>-->
+
+
 	<div class="row " id="mapping " style="margin-top: 50px ">
 		<div class="col-md-6 " id="machineLearning ">
 			<h2>Machine Learning</h2>
-			<div class="row controls btn-group ">
-				<button class="btn btn-default " onclick="togRecord() ">Record</button>
-				<button class="btn btn-default " onclick="train() ">Train</button>
-				<button class="btn btn-default " onclick="togRun() ">Run</button>
+			<div class="row controls btn-group">
+				<button class="btn btn-outline-primary btn-lg" data-toggle="button" aria-pressed="false" onclick="togRecord() ">Record</button>
+				<button class="btn btn-outline-primary btn-large" onclick="train() ">Train</button>
+				<button class="btn btn-outline-primary btn-large" data-toggle="button" aria-pressed="false" onclick="togRun() ">Run</button>
 			</div>
 		</div>
 		<div class="col-md-6 " id="synthContainer ">
-			<h2 class="row ">Synth</h2>
-			<div class="row " id="Synth ">
+			<h2 class="row">Synth</h2>
+			<div class="row" id="Synth ">
 				<div class="row controls btn-group ">
-					<button class="btn btn-default " onclick="randomize() ">Randomize</button>
-					<button class="btn btn-default " onclick="togMute() ">Mute</button>
+					<button class="btn btn-outline-primary" onclick="randomize() ">Randomize</button>
+					<button class="btn btn-outline-primary" onclick="togMute() ">Mute</button>
 				</div>
 				<div class="row controls " id="modParams ">
 					<h4 style="text-align: left; ">Modulator Parameters</h4>
