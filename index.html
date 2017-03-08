@@ -190,17 +190,17 @@
 					<div id="container_imu_rows" class="col-12">
 						<div class="row">
 							<div id="gyroGraph" class="col-md-10"></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Gyro</button>
+							<button id="gyro" type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Gyro</button>
 						</div>
 
 						<div class="row">
 							<div id="accelGraph" class="col-md-10"></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Accel</button>
+							<button id="accel" type="button" class="btn btn-outline-primary btn-sm button_imu" data-toggle="button" onclick="btn_onClick(this);">Accel</button>
 						</div>
 
 						<div class="row">
 							<div id="orientationGraph" class="col-md-10 "></div>
-							<button type="button" class="btn btn-outline-primary btn-sm button_imu active" data-toggle="button" onclick="btn_onClick(this);">Ori</button>
+							<button id="ori" type="button" class="btn btn-outline-primary btn-sm button_imu active" data-toggle="button" onclick="btn_onClick(this);">Ori</button>
 						</div>
 					</div>
 
@@ -586,13 +586,21 @@
 			case "ch8":
 				alert(displayText);
 				break;
+			case "gyro":
+				alert(displayText);
+				break;
+			case "accel":
+				alert(displayText);
+				break;
+			case "ori":
+				alert(displayText);
+				break;
 			default:
 				alert(displayText);
 		}
 	}
 
 	/////////////STATES
-
 
 
 	var recordState;
